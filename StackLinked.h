@@ -98,6 +98,7 @@ T* StackLinked<T>::pop()
    if (sze == 0) return NULL;
 
    //DO THIS
+	T* item = NULL;
 	if(sze > 0)
 	{
 		NextNode<T>* curr = top;
