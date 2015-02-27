@@ -81,7 +81,7 @@ bool Maze::isSolved(Cell* curr_cell, StackLinked<Cell>* stack)
 
 
    //have you solved the maze? (check that we are at the bottom right maze location and that it is a SPACE
-   if (row == height && col == width && maze->setElement(row, col) == SPACE)  
+   if (row == height && col == width && maze->getElement(row, col) == SPACE)  
    {
 
 
@@ -110,11 +110,11 @@ void Maze::processSolution(StackLinked<Cell>* stack)
    while(!stack -> isEmpty())
    {
       //get the next cell from the stack
-		int row = curr_cell->getRow();
-		int col = curr_cell->getCol();
-
+		Cell* curr_cell = stack->pop();
       
       //update the maze location to PATH
+		int row = curr_cell->getRow();
+		int col = curr_cell->getCol();
 		maze->setElement(row, col, PATH);
 
 
@@ -160,12 +160,12 @@ bool Maze::traverse()
       int col = curr_cell->getCol();
 
       //check that the current maze location corresponds to SPACE, otherwise delete it
-      if ( )
+      if ( maze->getElement(row, col) == SPACE)
       {
          //update the maze location to TRIED
          //put the cell on the stack (move forward through the maze)
-
-
+			maze->setElement(row, col, TRIED);
+			stack.push(curr_cell);
 
 
 
@@ -178,7 +178,7 @@ bool Maze::traverse()
       {
          //DO THIS
          //delete the cell
-
+			delete curr_cell;
 
       }
    }
